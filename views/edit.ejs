@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body py-1">
+                            <h3>Edit Post</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <p class="card-text">You are editing the blog post titled: <strong>
+                                    <%= post.title %>
+                                </strong></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="/" class="btn btn-sm btn-outline-secondary">Back</a>
+                                </div>
+                                <small class="text-body-secondary"><strong>By:</strong>
+                                    <%= post.author %>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container form my-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Edit your Blog</h5>
+                <form action="/update" method="post">
+                    <input type="hidden" name="id" value="<%= post.id %>">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="title" name="title" value="<%= post.title %>"
+                            placeholder="Title">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea name="content" id="content" class="form-control"
+                            placeholder="Content"><%= post.content %></textarea>
+                        <label for="content">Content</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="author" name="author" value="<%= post.author %>"
+                            placeholder="Author">
+                        <label for="author">Author</label>
+                    </div>
+                    <input type="submit" value="Update" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
